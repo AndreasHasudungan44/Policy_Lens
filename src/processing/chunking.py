@@ -15,8 +15,8 @@ CHUNKS_PATH = SILVER_DIR / "chunks.parquet"
 
 pipe = (
     Pipeline()
-    .chunk_with("recursive", tokenizer="gpt2", chunk_size=800, recipe="markdown")
-    .refine_with("overlap", context_size=100)
+    .chunk_with("recursive", tokenizer="gpt2", chunk_size=1000, recipe="markdown")
+    .refine_with("overlap", context_size=2000)
     .refine_with(
         "embeddings",
         embedding_model="sentence-transformers/all-MiniLM-L6-v2",
