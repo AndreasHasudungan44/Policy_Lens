@@ -1,0 +1,33 @@
+RAG_App_for_Policy_Eval/
+  data/
+    raw/
+      reports/
+      policy_docs/
+
+    bronze/
+      parsed_markdown/
+
+    silver/
+      chunks.parquet
+      claims.parquet
+      embeddings_metadata.parquet
+
+    gold/
+      company_scores.parquet
+      evidence_matches.parquet
+
+  vector_store/
+    chroma/
+
+  src/
+    ingest/
+    processing/
+    retrieval/
+    evaluation/
+    dashboard/
+    common/
+
+  notebooks/
+  tests/
+  README.md
+  pyproject.toml

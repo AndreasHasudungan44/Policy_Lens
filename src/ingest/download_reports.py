@@ -6,7 +6,7 @@ from urllib.parse import urlparse, parse_qs, unquote
 import requests
 
 
-INPUT_JSON = "/Users/andreasp/personal-projects/RAG_App for Policy Eval/data/efrag_pdf_links.json"
+INPUT_JSON = "data/efrag_pdf_links.json" ## NEED PIPELINE TO GENERATE THIS FILE FIRST
 OUT_DIR = Path("data/raw_efrag")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -15,7 +15,7 @@ session.headers.update({
     "User-Agent": "Mozilla/5.0 ESG-research-bot/0.1"
 })
 
-
+#### Helper functions #####
 def safe_name(text: str) -> str:
     text = text.strip().lower()
     text = re.sub(r"[^a-z0-9]+", "_", text)
@@ -57,6 +57,7 @@ def derive_name_country(rec: dict, final_url: str | None = None) -> tuple[str, s
     slug = slug.replace("-", " ").replace("_", " ").strip()
 
     return slug, country
+####################################
 
 
 with open(INPUT_JSON, "r", encoding="utf-8") as f:
