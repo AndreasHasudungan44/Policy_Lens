@@ -1,0 +1,18 @@
+2026-05-19 14:21:46,256 | INFO | Loading model: industrialpolicygroup/industrialpolicy-classifier
+2026-05-19 14:22:00,979 | INFO | Pipeline initialized successfully
+2026-05-19 14:22:00,979 | INFO | Loading parquet file: data/silver/chunks.parquet
+2026-05-19 14:22:01,144 | INFO | Loaded dataframe with 19978 rows
+2026-05-19 14:22:01,144 | INFO | Starting predictions...
+2026-05-19 14:23:18,597 | INFO | Predictions completed in 0:01:17.452646
+2026-05-19 14:23:18,607 | INFO | Prediction columns added to dataframe
+2026-05-19 14:23:18,735 | INFO | Saved classified dataframe to: data/gold/chunks_classified.parquet
+2026-05-19 14:23:18,737 | INFO | Label distribution: {'LABEL_2': 15913, 'LABEL_0': 2601, 'LABEL_1': 1464}
+2026-05-19 14:23:44,354 | INFO | Loading model: industrialpolicygroup/industrialpolicy-classifier
+2026-05-19 14:23:46,785 | INFO | Pipeline initialized successfully
+2026-05-19 14:23:46,786 | INFO | Loading parquet file: data/silver/chunks.parquet
+2026-05-19 14:23:46,898 | INFO | Loaded dataframe with 19978 rows
+2026-05-19 14:23:46,898 | INFO | Starting predictions...
+2026-05-19 14:25:04,378 | INFO | Predictions completed in 0:01:17.479404
+2026-05-19 14:25:04,392 | INFO | Prediction columns added to dataframe
+2026-05-19 14:25:04,516 | INFO | Saved classified dataframe to: data/gold/chunks_classified.parquet
+2026-05-19 14:25:04,519 | INFO | Label distribution: {'LABEL_2': 15913, 'LABEL_0': 2601, 'LABEL_1': 1464}

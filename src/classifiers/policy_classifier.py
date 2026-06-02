@@ -6,8 +6,8 @@ from datetime import datetime
 # -----------------------------------------------------------------------------
 # Logger setup
 # -----------------------------------------------------------------------------
-def setup_logger(log_file="environmental_classifier.log"):
-    logger = logging.getLogger("environmental_classifier")
+def setup_logger(log_file="policy_classifier.log"):
+    logger = logging.getLogger("policy_classifier")
     logger.setLevel(logging.INFO)
 
     # Avoid duplicate handlers if rerun in notebook
@@ -33,21 +33,33 @@ def setup_logger(log_file="environmental_classifier.log"):
 logger = setup_logger()
 
 # -----------------------------------------------------------------------------
+
 # Load model and tokenizer
+
 # -----------------------------------------------------------------------------
-tokenizer_name = "ESGBERT/EnvironmentalBERT-environmental"
-model_name = "ESGBERT/EnvironmentalBERT-environmental"
+
+model_name = "industrialpolicygroup/industrialpolicy-classifier"
 
 logger.info(f"Loading model: {model_name}")
 
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+
 model = AutoModelForSequenceClassification.from_pretrained(model_name)
-tokenizer = AutoTokenizer.from_pretrained(tokenizer_name, max_len=512)
 
 pipe = pipeline(
-    "text-classification",
+
+    task="text-classification",
+
     model=model,
+
     tokenizer=tokenizer,
-    # device=0  # Uncomment for GPU
+
+    truncation=True,
+
+    max_length=512,
+
+    device=0 if torch.cuda.is_available() else -1,
+
 )
 
 logger.info("Pipeline initialized successfully")
@@ -67,7 +79,6 @@ logger.info(f"Loaded dataframe with {len(df)} rows")
 # Run predictions
 # -----------------------------------------------------------------------------
 logger.info("Starting predictions...")
-
 start_time = datetime.now()
 
 predictions = pipe(
@@ -105,7 +116,7 @@ label_counts = df_classed["label"].value_counts().to_dict()
 
 logger.info(f"Label distribution: {label_counts}")
 
-print(df_classed.head())
+print(df_classed["label","score","text"].head())
 
 # -----------------------------------------------------------------------------
 # Example single prediction
