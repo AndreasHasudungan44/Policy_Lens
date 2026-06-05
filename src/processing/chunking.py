@@ -6,9 +6,9 @@ import pandas as pd
 from chonkie import Pipeline
 
 
-PROJECT_ROOT = Path("/Users/andreasp/personal-projects/RAG_App for Policy Eval")
+PROJECT_ROOT = Path("/home/apriambodo/Policy_Lens")
 
-BRONZE_DIR = PROJECT_ROOT / "data" / "bronze" / "parsed_markdown"
+DATA_DIR = PROJECT_ROOT / "data" / "silver" / "md_text"
 SILVER_DIR = PROJECT_ROOT / "data" / "silver"
 CHUNKS_PATH = SILVER_DIR / "chunks.parquet"
 
@@ -58,7 +58,7 @@ def chunk_markdown_file(md_file: Path) -> list[dict]:
 def build_chunks_table() -> None:
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
 
-    md_files = list(BRONZE_DIR.glob("*.md"))
+    md_files = list(DATA_DIR.glob("*.md"))
 
     all_rows = []
     for md_file in md_files:

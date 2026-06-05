@@ -6,8 +6,8 @@ from urllib.parse import urlparse, parse_qs, unquote
 import requests
 
 
-INPUT_JSON = "data/efrag_pdf_links.json" ## NEED PIPELINE TO GENERATE THIS FILE FIRST
-OUT_DIR = Path("data/raw_efrag")
+INPUT_JSON = "data/bronze/efrag_pdf_links.json" 
+OUT_DIR = Path("data/bronze/raw_efrag_pdf")
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 session = requests.Session()
